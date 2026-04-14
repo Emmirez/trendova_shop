@@ -26,22 +26,42 @@ const app = express();
 
 //  Security middleware
 app.use(helmet());
-const allowedOrigins = [
-  process.env.CLIENT_URL,
-  "http://localhost:5173",
-];
+// const allowedOrigins = [
+//   process.env.CLIENT_URL,
+//   "http://localhost:5173",
+// ];
+
+// app.use(
+//   cors({
+//     origin: function (origin, callback) {
+//       if (!origin) return callback(null, true);
+
+//       const isAllowed =
+//         origin === process.env.CLIENT_URL ||
+//         origin.includes("vercel.app") ||
+//         origin === "http://localhost:5173";
+
+//       if (isAllowed) {
+//         return callback(null, true);
+//       }
+
+//       return callback(null, false);
+//     },
+//     credentials: true,
+//   })
+// );
 
 app.use(
   cors({
     origin: function (origin, callback) {
+      const allowedOrigins = [
+        "https://trendova-shop.vercel.app",
+        "http://localhost:5173",
+      ];
+
       if (!origin) return callback(null, true);
 
-      const isAllowed =
-        origin === process.env.CLIENT_URL ||
-        origin.includes("vercel.app") ||
-        origin === "http://localhost:5173";
-
-      if (isAllowed) {
+      if (allowedOrigins.includes(origin)) {
         return callback(null, true);
       }
 
@@ -50,6 +70,8 @@ app.use(
     credentials: true,
   })
 );
+
+app.options("*", cors());
 
 
 
