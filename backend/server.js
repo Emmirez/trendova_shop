@@ -34,25 +34,24 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: function (origin, callback) {
-      
       if (!origin) return callback(null, true);
 
-      if (allowedOrigins.includes(origin)) {
+      const isAllowed =
+        origin === process.env.CLIENT_URL ||
+        origin.includes("vercel.app") ||
+        origin === "http://localhost:5173";
+
+      if (isAllowed) {
         return callback(null, true);
       }
 
-      
-      if (origin.includes("vercel.app")) {
-        return callback(null, true);
-      }
-
-      return callback(null, true); 
+      return callback(null, false);
     },
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
+
 
 // handle preflight requests
 app.options("*", cors());
