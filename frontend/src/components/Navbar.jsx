@@ -11,7 +11,7 @@ import {
   Sun,
   Moon,
   Bell,
-  Loader2
+  Loader2,
 } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
@@ -270,13 +270,13 @@ const Navbar = ({ onCartOpen }) => {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navLinks.map((link) =>
               link.type === "route" ? (
                 <Link
                   key={link.label}
                   to={link.href}
-                  className={`font-body text-sm tracking-wider hover-line transition-colors duration-300 ${
+                  className={`font-body text-sm tracking-wider hover-line transition-colors duration-300 whitespace-nowrap ${
                     location.pathname === link.href
                       ? "text-gold"
                       : scrolled || !hasDarkHero
@@ -290,7 +290,7 @@ const Navbar = ({ onCartOpen }) => {
                 <a
                   key={link.label}
                   href={link.href}
-                  className={`font-body text-sm tracking-wider hover-line transition-colors duration-300 ${
+                  className={`font-body text-sm tracking-wider hover-line transition-colors duration-300 whitespace-nowrap ${
                     scrolled || !hasDarkHero
                       ? "theme-text-secondary hover:text-gold"
                       : "text-cream/70 hover:text-gold"
