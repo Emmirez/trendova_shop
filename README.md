@@ -6,8 +6,8 @@ This project was built to understand **end-to-end e-commerce architecture**, inc
 
 
 ## 🌐 Live Demo
-Frontend: https://your-frontend-url  
-Backend API: https://your-backend-url  
+Frontend:  https://trendova-shop.vercel.app
+Backend API: https://trendova-shop.onrender.com 
 
 
 ## ✨ Key Features
