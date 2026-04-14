@@ -34,15 +34,29 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
+      
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
       }
+
+      
+      if (origin.includes("vercel.app")) {
+        return callback(null, true);
+      }
+
+      return callback(null, true); 
     },
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
+// handle preflight requests
+app.options("*", cors());
+
 //  Rate limiting
 // const globalLimiter = rateLimit({
 //   windowMs: 15 * 60 * 1000,
