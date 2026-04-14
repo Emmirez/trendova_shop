@@ -17,7 +17,7 @@ import notificationRoutes from "./routes/notificationRoutes.js";
 import adminNotificationRoutes from "./routes/adminNotificationRoutes.js";
 import addressRoutes from "./routes/addressRoutes.js";
 import wishlistRoutes from "./routes/wishlistRoutes.js";
-import lookRoutes from './routes/lookRoutes.js';
+import lookRoutes from "./routes/lookRoutes.js";
 import instagramRoutes from "./routes/instagramRoutes.js";
 
 dotenv.config();
@@ -26,30 +26,6 @@ const app = express();
 
 //  Security middleware
 app.use(helmet());
-// const allowedOrigins = [
-//   process.env.CLIENT_URL,
-//   "http://localhost:5173",
-// ];
-
-// app.use(
-//   cors({
-//     origin: function (origin, callback) {
-//       if (!origin) return callback(null, true);
-
-//       const isAllowed =
-//         origin === process.env.CLIENT_URL ||
-//         origin.includes("vercel.app") ||
-//         origin === "http://localhost:5173";
-
-//       if (isAllowed) {
-//         return callback(null, true);
-//       }
-
-//       return callback(null, false);
-//     },
-//     credentials: true,
-//   })
-// );
 
 app.use(
   cors({
@@ -68,11 +44,8 @@ app.use(
       return callback(null, false);
     },
     credentials: true,
-  })
+  }),
 );
-
-
-
 
 //  Rate limiting
 // const globalLimiter = rateLimit({
@@ -112,8 +85,8 @@ mongoose
 app.use("/api/auth", authLimiter, authRoutes);
 app.use("/api/users/addresses", addressRoutes);
 app.use("/api/users/wishlist", wishlistRoutes);
-app.use('/api/looks', lookRoutes);
-app.use("/api/instagram", instagramRoutes); 
+app.use("/api/looks", lookRoutes);
+app.use("/api/instagram", instagramRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/orders", orderRoutes);

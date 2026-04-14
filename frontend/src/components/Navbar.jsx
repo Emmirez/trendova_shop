@@ -270,7 +270,7 @@ const Navbar = ({ onCartOpen }) => {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) =>
               link.type === "route" ? (
                 <Link
@@ -556,7 +556,7 @@ const Navbar = ({ onCartOpen }) => {
             {/* Mobile menu toggle */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
-              className={`md:hidden transition-colors duration-300 hover:text-gold ${
+              className={`lg:hidden transition-colors duration-300 hover:text-gold ${
                 scrolled || menuOpen || !hasDarkHero
                   ? "theme-text-secondary"
                   : "text-cream/70"
@@ -572,7 +572,7 @@ const Navbar = ({ onCartOpen }) => {
       <div
         className={`fixed inset-0 z-40 bg-obsidian transition-transform duration-500 ${
           menuOpen ? "translate-x-0" : "translate-x-full"
-        } md:hidden flex flex-col items-center justify-center gap-8`}
+        } lg:hidden flex flex-col items-center justify-center gap-8`}
         style={{ backgroundColor: "var(--bg-primary)" }}
       >
         {navLinks.map((link, i) =>

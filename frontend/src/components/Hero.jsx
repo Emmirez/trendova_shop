@@ -79,8 +79,8 @@ const Hero = () => {
           </div>
 
           {/* Headline */}
-          <h1 className="font-display font-black leading-[0.9] mb-6"
-            style={{ fontSize: 'clamp(52px, 9vw, 130px)' }}>
+          <h1 className="font-display font-black leading-[0.92] mb-6"
+           style={{ fontSize: 'clamp(40px, 6vw, 100px)' }}>
             <span className="block text-cream">Where</span>
             <span className="block italic gold-text">Elegance</span>
             <span className="block text-cream">Meets Luxury</span>
