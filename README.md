@@ -118,5 +118,4 @@ git clone https://github.com/Emmirez/trendova_shop.git
 cd trendova-shop
 
 📄 License
-
-This project is for educational and portfolio purposes.
+This project is proprietary. All rights reserved © 2026 DevClosure.
